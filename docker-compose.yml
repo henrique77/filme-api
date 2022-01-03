@@ -1,0 +1,35 @@
+version: '3'
+services:
+  filme-api:
+    build:
+      dockerfile: ./Dockerfile.apifilme
+      context: .
+    container_name: filme-api
+    ports:
+      - "8000:8000"
+    networks:
+      - api-network
+    depends_on:
+      - mongo-db
+  mongo-db:
+    image: mongo:4.4.3
+    container_name: mongo-db
+    networks:
+      - api-network
+    ports:
+      - 27017:27017
+  mongo-import:
+    build:
+      dockerfile: ./Dockerfile.mongoimport
+      context: .
+    networks:
+      - api-network
+    depends_on:
+      - mongo-db
+    
+
+networks:
+  api-network:
+    driver: bridge
+
+  

@@ -1,0 +1,13 @@
+FROM golang:1.17
+
+WORKDIR /usr/local/go/filme-api
+
+COPY . /usr/local/go/filme-api
+
+RUN cd /usr/local/go/filme-api
+
+RUN GOOS=linux go build -a -o /filme-api
+
+EXPOSE 8000
+
+CMD ["/filme-api"]

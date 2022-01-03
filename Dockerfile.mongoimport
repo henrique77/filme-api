@@ -1,0 +1,5 @@
+FROM mongo:4.4.3
+
+COPY movies.json /movies.json
+
+CMD mongoimport --host mongo-db --db filmesdb --collection filmes --file /movies.json --jsonArray
