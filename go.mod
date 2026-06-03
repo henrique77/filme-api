@@ -1,6 +1,6 @@
 module filme-api
 
-go 1.17
+go 1.24.0
 
 require go.mongodb.org/mongo-driver v1.8.1
 
